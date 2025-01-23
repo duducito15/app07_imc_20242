@@ -11,7 +11,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'IMC App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: false),
+      theme: ThemeData(
+        useMaterial3: false,
+        sliderTheme: SliderThemeData(
+          activeTrackColor: Color(0xFFc1121f),
+          inactiveTrackColor: Color(0xFFfdf0d5),
+          thumbColor: Color(0xFF669bbc),
+          overlayColor: Color(0xFF780000).withOpacity(0.3),
+        ),
+      ),
       home: HomePage(),
     );
   }
