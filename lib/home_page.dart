@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Bienvenido, selecciona tu peso y altura",
@@ -115,6 +116,23 @@ class HomePage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF003049),
                 ),
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Divider(
+              height: 10.0,
+              color: Color(0xFF003049),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text(
+              "Resultado: ",
+              style: TextStyle(
+                fontSize: 15.0,
+                color: Color(0xFF003049),
               ),
             ),
           ],
