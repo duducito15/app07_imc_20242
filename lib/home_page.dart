@@ -135,6 +135,14 @@ class HomePage extends StatelessWidget {
                 color: Color(0xFF003049),
               ),
             ),
+            Center(
+              child: Image.asset(
+                "assets/images/image3.png",
+                height: 200.0,
+                width: 200.0,
+                fit: BoxFit.contain,
+              ),
+            ),
           ],
         ),
       ),
