@@ -1,7 +1,26 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  double weight = 80;
+  double height = 165;
+
+  double imc = 0;
+  String result = "Normal";
+
+  calculateIMC() {
+    imc = weight / pow(height / 100, 2);
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +51,7 @@ class HomePage extends StatelessWidget {
               textBaseline: TextBaseline.alphabetic,
               children: [
                 Text(
-                  "70",
+                  weight.toStringAsFixed(0),
                   style: TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
@@ -53,14 +72,13 @@ class HomePage extends StatelessWidget {
               ],
             ),
             Slider(
-              value: 70,
+              value: weight,
               min: 20,
               max: 200,
-              onChanged: (double value) {},
-              // activeColor: Colors.amber,
-              // inactiveColor: Colors.blue,
-              // overlayColor: Color(Colors.amber) ,
-              // thumbColor: Colors.red,
+              onChanged: (double value) {
+                weight = value;
+                setState(() {});
+              },
             ),
             SizedBox(
               height: 10.0,
@@ -71,7 +89,7 @@ class HomePage extends StatelessWidget {
               textBaseline: TextBaseline.alphabetic,
               children: [
                 Text(
-                  "175",
+                  height.toStringAsFixed(0),
                   style: TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
@@ -92,10 +110,13 @@ class HomePage extends StatelessWidget {
               ],
             ),
             Slider(
-              value: 70,
+              value: height,
               min: 20,
               max: 200,
-              onChanged: (double value) {},
+              onChanged: (double value) {
+                height = value;
+                setState(() {});
+              },
             ),
             SizedBox(
               height: 10.0,
@@ -104,7 +125,9 @@ class HomePage extends StatelessWidget {
               width: double.infinity,
               height: 50.0,
               child: ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  calculateIMC();
+                },
                 label: Text(
                   "Calcular",
                   style: TextStyle(
@@ -141,6 +164,41 @@ class HomePage extends StatelessWidget {
                 height: 200.0,
                 width: 200.0,
                 fit: BoxFit.contain,
+              ),
+            ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    imc.toStringAsFixed(1),
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      color: Color(0xFF780000),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    result,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      color: Color(0xFF003049),
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    "Do occaecat elit tempor eiusmod ut aliqua aliquip anim do incididunt laboris. Consequat sit aute non dolore aliquip minim fugiat quis adipisicing nisi voluptate commodo deserunt.",
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Color(0xFF003049),
+                      fontWeight: FontWeight.normal,
+                    ),
+                    textAlign: TextAlign.center,
+                  )
+                ],
               ),
             ),
           ],
